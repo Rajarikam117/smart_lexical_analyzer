@@ -55,7 +55,9 @@ VS Code
 
 Output format
 
-The tokenizer returns a dict with:
+There are two common ways to view tokens:
+
+- Headless / programmatic JSON (used by the test runner and APIs):
 
 ```json
 {
@@ -63,10 +65,21 @@ The tokenizer returns a dict with:
     {"type": "IDENTIFIER", "value": "x", "line": 1, "column": 5},
     {"type": "INT", "value": "123", "line": 1, "column": 9}
   ],
-  "errors": [ /* array of LexError objects (in-memory) */ ],
+  "errors": [],
   "symbol_table": {"x": {"line":1, "column":5}}
 }
 ```
+
+- GUI table (what you see in the `Tokens` panel of the tkinter app):
+
+The GUI presents tokens in a sortable table with the following columns:
+
+| Type | Value | Line | Column |
+|------|-------:|-----:|-------:|
+| IDENTIFIER | x | 1 | 5 |
+| INT | 123 | 1 | 9 |
+
+Use the table headers to sort tokens by any column. The GUI also allows copying or exporting the table contents via future enhancements.
 
 Notes & tips
 - Run the package with `python -m smart_lexer.main` to ensure imports resolve correctly.
